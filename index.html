@@ -1,23 +1,665 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "송파구 인터넷 가입 시 현금 사은품을 얼마나 받을 수 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "현금 사은품은 통신사, 요금제, 결합 상품 여부, 그리고 시기별 프로모션에 따라 달라집니다. 저희 비교 센터를 통해 SK, KT, LG U+ 각 통신사의 현금 사은품 규모를 비교할 수 있으며, 2026년 현재 평균적으로 40~50만 원대의 사은품 혜택이 제공되고 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "송파구 특정 지역(잠실동, 문정동 등)에 따라 인터넷 설치가 불가능할 수도 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "대부분의 송파구 지역은 광케이블(FTTH) 설치가 가능하지만, 오래된 다가구 주택이나 외곽 지역의 경우 통신사별로 인프라 차이가 있을 수 있습니다. 문정동이나 잠실동의 대단지 아파트는 거의 모든 통신사 설치가 가능하나, 마천동, 거여동 일부 주택가에서는 현장 확인이 필요할 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "SK, KT, LG U+ 중 어떤 통신사를 선택해야 가장 저렴하게 이용할 수 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "단독 가입 시에는 통신사별 요금 차이가 크지 않으나, 휴대폰 결합 할인 혜택을 활용하면 비용을 크게 절감할 수 있습니다. 예를 들어, 가족 구성원들이 SKT 휴대폰을 사용하는 경우 SKT 인터넷 가입 시 '온가족 할인'과 같은 결합 상품을 추천합니다. 저희 전문가가 고객님의 휴대폰 사용 현황을 분석하여 가장 저렴한 결합 상품을 추천해 드립니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "인터넷 가입 절차는 어떻게 되며, 설치까지 얼마나 걸리나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "가입 절차는 간단합니다. 1. 견적 요청 및 상담: 고객님의 사용 환경과 원하는 요금제를 상담합니다. 2. 가입 신청서 작성: 휴대폰 인증을 통해 간편하게 진행됩니다. 3. 설치 일정 조율: 설치 희망일을 정합니다. 보통 신청 후 1~3일 이내에 설치가 가능합니다. 송파구 지역은 설치 기사 인프라가 풍부하여 당일 설치도 가능할 수 있습니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- 스타일: 부드럽고 다채로운 색, 타이틀 강조, 계층 구조 -->
+  <style>
+    :root {
+      --primary-color: #007bff; /* 파란색 계열 */
+      --secondary-color: #0056b3; /* 짙은 파란색 */
+      --accent-color: #f0f8ff; /* 연한 하늘색 배경 */
+      --highlight-color: #e9ecef; /* 연한 회색 */
+      --text-color: #212529; /* 짙은 회색 */
+      --bg-light: #f8f9fa; /* 아주 연한 배경색 */
+      --bg-white: #ffffff;
+      --btn-color: #dc3545; /* 강조 버튼 (빨간색 계열) */
+      --btn-hover: #c82333;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      line-height: 1.8;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      background-color: var(--primary-color);
+      padding: 25px 20px;
+      text-align: center;
+      color: var(--bg-white);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    header h1 a {
+      color: var(--bg-white);
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: var(--bg-white);
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h1 {
+      font-size: 3.8em;
+      margin-bottom: 20px;
+      font-weight: 900;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .hero p {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+    .cta-btn {
+      background-color: var(--btn-color);
+      color: var(--bg-white);
+      padding: 18px 45px;
+      font-size: 1.3em;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .cta-btn:hover {
+      background-color: var(--btn-hover);
+      transform: translateY(-3px);
+    }
+
+    /* 폼 디자인 */
+    .compare-form-box {
+      background-color: var(--bg-white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
+      text-align: left;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .compare-form-box h2 {
+      color: var(--secondary-color);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 2em;
+    }
+    .compare-form-box p {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #6c757d;
+    }
+    .compare-form-box label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 1.1em;
+      color: var(--text-color);
+    }
+    .compare-form-box input[type="text"],
+    .compare-form-box input[type="tel"],
+    .compare-form-box select {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 20px;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 1em;
+    }
+
+    /* 콘텐츠 섹션 */
+    .content-section {
+      padding: 80px 0;
+      background-color: var(--bg-white);
+      border-bottom: 1px solid var(--highlight-color);
+    }
+    .content-section.gray {
+      background-color: var(--accent-color);
+    }
+    .content-section h2 {
+      font-size: 2.5em;
+      color: var(--secondary-color);
+      margin-bottom: 40px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .content-section h3 {
+      font-size: 1.8em;
+      color: var(--primary-color);
+      margin-top: 35px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      border-left: 5px solid var(--btn-color);
+      padding-left: 15px;
+    }
+    .content-section p {
+      font-size: 1.1em;
+      color: #495057;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    /* 그리드 및 특징 목록 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    .feature-grid .item {
+      width: calc(33.33% - 20px);
+      margin: 10px 0;
+      padding: 30px;
+      background-color: var(--bg-white);
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+    .feature-grid .item:hover {
+      transform: translateY(-5px);
+    }
+    .feature-grid .item img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+    .feature-grid .item h3 {
+      font-size: 1.3em;
+      color: var(--secondary-color);
+      margin-top: 0;
+      margin-bottom: 10px;
+      border: none;
+      padding: 0;
+    }
+
+    /* 키워드 목록 */
+    .keyword-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+    .keyword-list li {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      padding: 10px 20px;
+      margin: 6px;
+      border-radius: 25px;
+      font-weight: 500;
+      font-size: 0.95em;
+      transition: background-color 0.3s ease;
+    }
+    .keyword-list li:hover {
+      background-color: var(--primary-color);
+    }
+
+    /* FAQ 섹션 */
+    .faq-item {
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+    }
+    .faq-item h3 {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.4em;
+      color: var(--primary-color);
+      font-weight: 500;
+      margin: 0;
+      padding-left: 0;
+      border: none;
+    }
+    .faq-item h3::after {
+      content: '+';
+      font-size: 1.5em;
+      color: var(--secondary-color);
+      transition: transform 0.3s;
+    }
+    .faq-item.active h3::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .faq-item p {
+      display: none;
+      padding-top: 15px;
+      color: #555;
+      font-size: 1.1em;
+      line-height: 1.7;
+      background-color: var(--highlight-color);
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    .faq-item.active p {
+      display: block;
+    }
+
+    /* 비교 테이블 */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      font-size: 1.1em;
+    }
+    .compare-table th, .compare-table td {
+      border: 1px solid #e0e0e0;
+      padding: 15px;
+      text-align: center;
+    }
+    .compare-table th {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      font-weight: bold;
+    }
+    .compare-table td {
+      background-color: var(--bg-white);
+      color: #333;
+    }
+    .compare-table tr:nth-child(even) td {
+      background-color: var(--accent-color);
+    }
+
+    /* 추가 정보 섹션 */
+    .sub-section {
+      padding: 20px;
+      background-color: var(--highlight-color);
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+    .sub-section h4 {
+      font-size: 1.4em;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    .sub-section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    /* 푸터 */
+    footer {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9em;
+    }
+    footer a {
+      color: var(--bg-white);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 모바일 반응형 */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.8em;
+      }
+      .hero p {
+        font-size: 1.2em;
+      }
+      .cta-btn {
+        padding: 15px 30px;
+        font-size: 1.1em;
+      }
+      .compare-form-box {
+        padding: 25px;
+        margin-top: 20px;
+      }
+      .content-section h2 {
+        font-size: 2em;
+      }
+      .feature-grid .item {
+        width: 100%;
+        margin: 10px 0;
+      }
+      .compare-table th, .compare-table td {
+        padding: 10px;
+        font-size: 0.9em;
+      }
+      .keyword-list li {
+        margin: 3px;
+        font-size: 0.9em;
+      }
+      .faq-item h3 {
+        font-size: 1.2em;
+      }
+      .content-section p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="/">송파구인터넷 가입센터</a></h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>송파구 인터넷 가입, 현명한 선택으로 <span style="color:#FFD700;">최대 혜택</span> 받기</h1>
+        <p>SK, KT, LG U+ 3사 요금제와 사은품 현황을 송파구 전문 컨설턴트가 비교 분석해 드립니다.</p>
+        <div class="compare-form-box">
+          <h2>송파구 인터넷 가입 상담 신청</h2>
+          <p>간단한 정보 입력으로 송파구 지역에 최적화된 맞춤 견적을 받아보세요.</p>
+          <form id="internet-form" action="#" method="post">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+
+            <label for="phone">연락처</label>
+            <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요" required>
+
+            <label for="address">설치 주소 (송파구 지역)</label>
+            <input type="text" id="address" name="address" placeholder="예: 송파구 잠실동 롯데캐슬골드 아파트" required>
+
+            <label for="serviceType">원하는 서비스 종류</label>
+            <select id="serviceType" name="serviceType" required>
+              <option value="">-- 선택하세요 --</option>
+              <option value="highspeed">100메가 (가성비)</option>
+              <option value="gigalite">500메가 (기가 라이트)</option>
+              <option value="giga">1기가 (기가 인터넷)</option>
+              <option value="tvBundle">인터넷 + TV 결합</option>
+            </select>
+
+            <label for="existingProvider">기존 사용 통신사</label>
+            <select id="existingProvider" name="existingProvider" required>
+              <option value="">-- 선택하세요 --</option>
+              <option value="none">없음</option>
+              <option value="skt">SKT</option>
+              <option value="kt">KT</option>
+              <option value="lguplus">LG U+</option>
+              <option value="other">기타</option>
+            </select>
+
+            <button type="submit" class="cta-btn">무료 상담 신청</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>왜 송파구에서 인터넷 가입 시 전문 비교가 필요할까요?</h2>
+        <div class="feature-grid">
+          <div class="item">
+            <img src="https://via.placeholder.com/60/007bff/fff?text=ICON1" alt="현금 사은품 아이콘">
+            <h3>최대 현금 사은품</h3>
+            <p>통신사 본사보다 높은 현금 지원을 통해 실질적인 비용 절감을 약속드립니다. 2026년 최신 현금 지원 정보를 실시간으로 반영합니다.</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/60/007bff/fff?text=ICON2" alt="빠른 설치 아이콘">
+            <h3>신속한 설치 서비스</h3>
+            <p>송파구 지역 전문 설치 기사 배정으로 신청 후 1~3일 이내, 혹은 당일 설치를 지원하여 불편함을 최소화합니다.</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/60/007bff/fff?text=ICON3" alt="맞춤형 컨설팅 아이콘">
+            <h3>1:1 맞춤형 컨설팅</h3>
+            <p>고객님의 휴대폰 결합 할인, 사용 패턴, 설치 주소지 특성을 고려한 최적의 요금제를 추천합니다.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:50px;">함께 많이 찾는 키워드</h3>
+        <ul class="keyword-list">
+          <li>#송파구인터넷가입</li>
+          <li>#잠실인터넷설치</li>
+          <li>#문정동인터넷추천</li>
+          <li>#가락동인터넷가격비교</li>
+          <li>#송파구인터넷현금지원</li>
+          <li>#인터넷가입사은품순위</li>
+          <li>#송파구원룸인터넷</li>
+          <li>#SKT결합할인</li>
+          <li>#KT기가인터넷</li>
+          <li>#LG유플러스결합상품</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section gray">
+      <div class="container">
+        <h2>2026년 송파구 통신사별 인터넷 상품 상세 비교</h2>
+        <p>송파구 지역은 SKT, KT, LG U+ 3사 모두 초고속 광랜(FTTH) 인프라가 잘 갖춰진 곳입니다. 하지만 각 통신사별 장단점과 요금제 구성, 그리고 현금 사은품 혜택에 차이가 있기 때문에 꼼꼼한 비교가 필요합니다. 특히 송파구는 잠실동, 문정동, 가락동 등 아파트 단지가 밀집되어 있어 대규모 단지 할인이나 결합 상품 혜택이 중요합니다.</p>
+
+        <!-- 비교표 삽입 -->
+        <h3>통신사별 주요 상품 비교 (2026년 기준)</h3>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>SKT (SK브로드밴드)</th>
+              <th>KT (케이티)</th>
+              <th>LG U+ (엘지 유플러스)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>특징</td>
+              <td>가족 결합 할인(T끼리 온가족 할인, 온가족 플랜) 혜택이 강력함. 넓은 사용자 층과 다양한 제휴 서비스.</td>
+              <td>가장 안정적인 품질과 넓은 커버리지. 통신 3사 중 기가 인터넷 품질 만족도가 가장 높음.</td>
+              <td>IPTV 콘텐츠 강점 (넷플릭스, 디즈니플러스 등 제휴). 젊은 층에 인기 많은 다양한 프로모션.</td>
+            </tr>
+            <tr>
+              <td>주요 요금제</td>
+              <td>100M, 500M, 1G, 2.5G, 10G</td>
+              <td>100M, 500M, 1G, 2.5G, 10G</td>
+              <td>100M, 500M, 1G, 2.5G, 10G</td>
+            </tr>
+            <tr>
+              <td>추천 대상</td>
+              <td>SKT 휴대폰 사용자가 많은 가정 (가족 결합 필수).</td>
+              <td>인터넷 품질을 최우선으로 생각하는 사용자. 잦은 끊김에 민감한 게이머.</td>
+              <td>다양한 채널과 OTT 서비스를 선호하는 사용자. LG U+ 휴대폰 사용 가정.</td>
+            </tr>
+            <tr>
+              <td>송파구 인프라</td>
+              <td>잠실동, 신천동, 문정동 등 아파트 단지 밀집 지역 광케이블 인프라 구축 완료.</td>
+              <td>가락동, 방이동 등 주택가 및 오피스 지역에서도 안정적인 속도 제공.</td>
+              <td>풍납동, 석촌동 등 구도심 지역에도 꾸준히 인프라 확장.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><strong>전문가 팁:</strong> 통신사마다 제공하는 사은품의 '평균 금액'과 '실질 혜택'에는 차이가 있습니다. 2026년 기준으로 송파구 지역에서 인터넷 가입 시 현금 사은품은 3사 모두 비슷한 수준이지만, 저희 비교센터는 고객님께 가장 유리한 조건을 찾아드립니다. 휴대폰 결합 할인율, TV 요금제 구성, 추가 사은품 등을 종합적으로 고려하여 "최대" 혜택을 받을 수 있도록 컨설팅을 진행합니다. 단순히 "현금 많이 주는 곳"을 찾기보다는, 3년 총 비용을 비교하는 것이 현명합니다. 저희는 '디시' 같은 커뮤니티 후기에서 언급되는 내용보다 더 투명하고 정확한 정보를 제공합니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>송파구 지역별 인터넷 설치 특성 및 유의사항 (심층 분석)</h2>
+        <p>송파구는 서울에서도 인구 밀도가 높은 지역으로, 대규모 아파트 단지부터 빌라, 오피스텔, 원룸까지 다양한 주거 형태가 공존합니다. 따라서 인터넷 설치 시 주소지 특성에 따라 설치 가능 여부나 비용이 달라질 수 있습니다. 특히 2026년도에는 10기가급 초고속 인터넷 수요가 늘어나면서 광케이블 인입 여부가 중요해지고 있습니다. 저희 비교 센터는 송파구의 모든 동(잠실본동, 잠실1동, 잠실2동, 잠실3동, 잠실4동, 잠실6동, 잠실7동, 신천동, 풍납1동, 풍납2동, 거여1동, 거여2동, 마천1동, 마천2동, 오금동, 방이1동, 방이2동, 송파1동, 송파2동, 석촌동, 삼전동, 가락본동, 가락1동, 가락2동, 문정1동, 문정2동, 장지동, 위례동)의 통신 인프라 데이터를 분석하여 최적의 통신사를 추천합니다.</p>
+
+        <h3>1. 잠실동 및 신천동 (아파트 밀집 지역)</h3>
+        <p>잠실동과 신천동은 잠실 롯데월드, 잠실주공5단지, 잠실엘스, 리센츠, 트리지움 등 대단지 아파트가 밀집해 있습니다. 이 지역은 대부분 광케이블 인프라가 잘 되어 있어 1기가 이상의 기가 인터넷 설치에 전혀 문제가 없습니다. KT의 경우 잠실 지역에서 오랫동안 안정적인 품질을 제공해 왔으며, SKT와 LG U+ 역시 초고속 인터넷 인프라가 완비되어 있습니다. 이 지역 고객들은 보통 휴대폰 결합 할인 혜택을 통해 요금 절약을 우선시합니다.</p>
+
+        <h3>2. 문정동 및 가락동 (주거·업무 복합 지역)</h3>
+        <p>문정동 법조타운이나 가락시장 주변은 오피스텔, 상가, 그리고 아파트 단지가 혼재되어 있습니다. 특히 문정동 원룸 지역이나 오래된 빌라의 경우, 인입되는 회선이 제한적이거나 광케이블 설치가 까다로울 수 있습니다. 이 경우 3사 중 어떤 통신사가 해당 건물에 기가 인터넷 회선을 먼저 설치했는지에 따라 선택지가 달라지기도 합니다. 2026년 기준, 문정동 주거 지역은 통신사별 경쟁이 치열하여 사은품 혜택이 좋은 편입니다.</p>
+
+        <h3>3. 거여동, 마천동, 오금동 (주택가 및 재개발 지역)</h3>
+        <p>거여동, 마천동, 오금동 일부 지역은 상대적으로 인프라가 늦게 구축된 곳이 있습니다. 특히 재개발이나 재건축이 진행되는 지역은 일시적으로 인터넷 설치가 중단되거나, 기존의 노후된 동축 케이블을 사용해야 할 수도 있습니다. 그러나 최근 마천동과 거여동 주택가에도 광케이블 인프라 확충이 활발히 이루어지고 있어 2026년 현재는 기가 인터넷 설치가 가능한 곳이 늘어나고 있습니다. 이 지역은 통신사 인프라 상황을 실시간으로 확인하고 설치 가능한 업체를 선택하는 것이 중요합니다.</p>
+
+        <h3>4. 위례동 및 장지동 (신규 택지 개발 지역)</h3>
+        <p>송파구 위례동은 신규 아파트 단지가 많아 입주 시기에 맞춰 인터넷 가입이 폭주하는 지역입니다. 신규 아파트의 경우 KT, SKT, LG U+ 3사가 모두 인프라를 구축하지만, 각 통신사별로 사은품이나 프로모션 조건이 다릅니다. 이사나 신규 입주 시에는 '디시', '맘카페' 등에서 후기를 찾아보는 것도 좋지만, 전문 컨설턴트의 비교견적을 통해 정확한 정보를 얻는 것이 빠릅니다. 위례 지역은 최근 5년 이내에 구축된 아파트가 많아 1기가 이상의 초고속 인터넷 설치가 용이합니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section gray">
+      <div class="container">
+        <h2>인터넷 가입 시 현금 사은품 혜택을 극대화하는 팁</h2>
+        <p>많은 고객들이 인터넷 가입 시 현금 사은품을 중요한 결정 요소로 여깁니다. 2026년 현재 통신사별 현금 사은품은 '인터넷 가이드라인'에 따라 법적으로 상한선이 정해져 있지만, 실제 지급액은 대리점이나 판매 채널별로 다를 수 있습니다. 저희는 투명한 비교 견적을 통해 고객님께 가장 유리한 혜택을 제공하며, 불필요한 비용을 절감할 수 있는 '꿀팁'을 알려드립니다.</p>
+
+        <h3>1. 휴대폰 결합 할인 활용하기 (필수)</h3>
+        <p>인터넷 요금을 절약하는 가장 확실한 방법은 휴대폰 결합 할인입니다. 가족 구성원이 사용하는 휴대폰 통신사를 확인하여, 해당 통신사로 인터넷을 가입하는 것이 가장 저렴합니다. SKT '온가족 할인', KT '총액 결합 할인', LG U+ '가족무한사랑' 등의 상품을 활용하면 월 1만원 이상 절약이 가능합니다.</p>
+
+        <h3>2. 비싼 요금제보다는 합리적인 속도 선택하기</h3>
+        <p>일반 가정에서는 100메가(M) 인터넷으로도 충분합니다. 1인 가구, 원룸 거주자, 또는 간단한 웹서핑 위주 사용자에게는 100메가 요금제가 저렴한 가격으로 충분한 속도를 제공합니다. 반면, 4인 이상 가정에서 고화질 OTT 시청이나 온라인 게임을 자주 한다면 500메가 이상의 '기가 라이트' 요금제를 추천합니다. 1기가(G) 이상은 스트리머나 전문 직업군에게 적합하며 일반 가정에서는 과도한 요금일 수 있습니다. 송파구의 경우 1인 가구 비율이 높은 잠실동 원룸 지역에서는 100M 요금제 가입 비율이 높습니다.</p>
+
+        <h3>3. 제휴 카드 할인 및 상품권 혜택 활용</h3>
+        <p>일부 통신사는 제휴 신용카드를 통한 자동이체 시 추가 할인을 제공합니다. 또한 현금 사은품 외에 상품권이나 백화점 상품권 혜택을 추가로 제공하는 업체도 있습니다. 신규 가입 시 이러한 숨겨진 혜택까지 꼼꼼하게 비교하여 총 혜택을 극대화하는 것이 중요합니다.</p>
+
+        <h3>4. 인공지능(AI) 시대, 스마트 기기 결합 상품 활용</h3>
+        <p>2026년에는 AI 스피커, 스마트홈 IOT 기기 등의 활용이 늘어나고 있습니다. LG U+나 SKT는 AI 스피커나 스마트TV를 결합한 상품을 출시하여 추가 혜택을 제공하기도 합니다. 제미나이(Gemini), 챗지피티(ChatGPT) 등 AI 기술 기반 서비스가 활성화되면서 고용량 데이터를 처리할 수 있는 고속 인터넷의 중요성도 커지고 있습니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>자주 묻는 질문 (FAQ)</h2>
+
+        <div class="faq-item">
+          <h3>Q1. 송파구 인터넷 가입 시 현금 사은품은 '얼마'가 적정 금액인가요?</h3>
+          <p>현금 사은품의 '평균 금액'은 시기별로 변동이 심합니다. 2026년 기준, 3년 약정 가입 시 100M 상품은 40만 원대, 500M 이상 상품은 45만 원대 전후가 적정 금액으로 여겨집니다. 일부 비양심적인 업체는 과도한 금액을 제시하며 고객을 유치하지만, 이는 약속된 금액을 지급하지 않거나 불법적인 수수료가 포함된 경우가 많습니다. 저희는 '법적 상한선' 내에서 최대치의 혜택을 투명하게 안내합니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q2. KT, SKT, LG U+ 인터넷 속도의 '장단점'과 '차이점'이 궁금합니다.</h3>
+          <p>KT는 통신 3사 중 가장 넓은 커버리지와 안정적인 품질로 '장점'을 가집니다. 특히 기가 인터넷에서는 압도적인 안정성을 보여줍니다. SKT는 휴대폰 결합 할인 혜택이 가장 강력하며, LG U+는 IPTV 콘텐츠가 다양하다는 '장점'이 있습니다. '단점'으로는 특정 지역에서 인프라 차이가 있을 수 있지만, 송파구 내 대도시 지역에서는 큰 '차이점'이 없습니다. 저희 전문가가 고객님의 주소지 인프라를 확인하여 가장 유리한 통신사를 추천해 드립니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q3. 송파구 '저렴한곳'이나 '싼곳'을 찾고 있는데, 어떻게 비교해야 하나요?</h3>
+          <p>'저렴한곳'을 찾는 가장 좋은 방법은 '비용'을 총합으로 계산하는 것입니다. 단순히 월 요금만 비교하지 말고, 3년 약정 기간 동안의 총 요금에 현금 사은품 혜택을 합산하여 계산해야 합니다. 저희 견적 요청 서비스를 통해 SK, KT, LG의 3년 총 '예상 금액'을 비교하여 가장 '저렴한곳'을 찾을 수 있습니다. 또한, '내돈내산' 후기를 참고하여 사은품을 제대로 지급하는 '전문 업체'를 선택하는 것이 중요합니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q4. 인터넷 가입 시 '신규 가입'과 '재약정' 중 무엇이 유리한가요?</h3>
+          <p>대부분의 경우 '신규 가입'이 '재약정'보다 훨씬 유리합니다. 통신사들은 신규 고객 유치를 위해 더 많은 현금 사은품과 혜택을 제공합니다. 기존 통신사 재약정 시에는 현금 사은품 혜택이 거의 없거나 상품권 수준에 머무르는 경우가 많습니다. 따라서 약정이 끝났다면 '신규 가입'을 통해 통신사를 변경하고 최대 '현금지원'을 받는 것이 현명합니다. 저희는 '신규 가입' 혜택을 최대로 받을 수 있도록 도와드립니다.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>Q5. '내돈내산' 후기나 '디시' 같은 커뮤니티 정보가 정확한가요?</h3>
+          <p>인터넷 커뮤니티나 블로그 '후기'는 참고 자료로 활용할 수 있지만, '광고성' 정보가 많습니다. 특히 '내돈내산' 후기처럼 보이지만 실제로는 업체 광고인 경우가 많습니다. 또한 사은품 금액은 시시때때로 변동하므로, 몇 달 전의 '후기'는 현재 시점과 맞지 않을 수 있습니다. 2026년 최신 정보를 바탕으로 한 전문 비교 업체인 저희에게 상담을 받는 것이 가장 정확하고 안전합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+        <p>인터넷 가입 및 통신사 서비스에 대한 정확한 정보와 법률적 근거는 다음과 같은 공신력 있는 기관에서 확인할 수 있습니다.</p>
+        <ul>
+          <li><a href="https://www.kcc.go.kr" target="_blank" rel="noopener"><strong>방송통신위원회 (KCC)</strong></a><br> 통신 서비스 관련 정책 및 법규, 소비자 보호 관련 정보 제공.</li>
+          <li><a href="https://www.msit.go.kr" target="_blank" rel="noopener"><strong>과학기술정보통신부</strong></a><br> 통신 인프라 구축 및 기술 개발 관련 정책 정보, 초고속 인터넷 관련 법규.</li>
+          <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9%EC%A0%95%EB%B3%B4/%EC%B4%88%EA%B3%A0%EC%86%8D%EC%9D%B8%ED%84%B0%EB%84%B7%EC%9D%B8%EC%A6%9D%EC%A0%9C" target="_blank" rel="noopener"><strong>초고속인터넷 사업자 인증 관련 법규</strong></a><br> 초고속 인터넷 서비스 품질 및 사업자 관련 법률 정보.</li>
+          <li><a href="https://www.sbiz.or.kr/" target="_blank" rel="noopener"><strong>소상공인시장진흥공단</strong></a><br> 소상공인 사업장 인터넷 가입 시 정부 지원 혜택 및 정보.</li>
+          <li><a href="https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EC%9D%B8%ED%84%B0%EB%84%B7" target="_blank" rel="noopener"><strong>대한민국의 인터넷 - 위키백과</strong></a><br> 대한민국 인터넷 역사 및 통신 기술 발전 관련 정보.</li>
+        </ul>
+        <p>이러한 자료들을 참고하여 '전문 업체' 선택 시 신뢰성을 검증하고, '가격' 및 '혜택'을 비교하는 데 도움을 받을 수 있습니다. 저희는 이러한 공인된 정보를 바탕으로 투명하고 합법적인 컨설팅을 제공합니다.</p>
+
+        <h3 style="margin-top: 50px;">고객 체류 시간 향상을 위한 추가 정보 입력란</h3>
+        <p>고객님의 인터넷 사용 환경을 더욱 정확하게 파악하여 맞춤 견적을 제공하기 위해 추가 정보를 입력해 주세요.</p>
+        <div class="compare-form-box" style="margin-top: 20px;">
+          <form id="detail-form" action="#" method="post">
+            <label for="existingProvider">현재 사용 중인 통신사 (재확인)</label>
+            <input type="text" id="existingProvider2" name="existingProvider2" placeholder="예: SKT 또는 KT, LG U+" required>
+
+            <label for="usagePattern">인터넷 사용 목적 (다중 선택 가능)</label>
+            <select id="usagePattern" name="usagePattern" required>
+              <option value="">-- 선택하세요 --</option>
+              <option value="web">웹서핑 및 일반 사무</option>
+              <option value="game">온라인 게임 (LOL, FPS 등)</option>
+              <option value="ott">OTT 시청 (넷플릭스, 유튜브 등)</option>
+              <option value="stream">스트리밍 및 동영상 업로드</option>
+            </select>
+
+            <label for="bundle">결합 상품 희망 여부</label>
+            <select id="bundle" name="bundle" required>
+              <option value="yes">예 (휴대폰 결합 희망)</option>
+              <option value="no">아니오</option>
+            </select>
+
+            <label for="extraMessage">추가 문의사항</label>
+            <textarea id="extraMessage" name="extraMessage" rows="4" placeholder="설치 희망 날짜, 특이사항 등을 입력해 주세요."></textarea>
+
+            <button type="submit" class="cta-btn">상세 견적 요청</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // FAQ 토글 기능
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+        const answer = parent.querySelector('p');
+        if (parent.classList.contains('active')) {
+          answer.style.display = 'block';
+        } else {
+          answer.style.display = 'none';
+        }
+      });
+    });
+  </script>
+  
